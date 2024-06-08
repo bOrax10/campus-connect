@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.avatar-container {
+  width: 15%;
+  /* Set your desired width percentage */
+  height: 100%;
+  aspect-ratio: 1;
+  /* Set the same percentage for padding-top to maintain aspect ratio */
+  border-radius: 50%;
+  /* Ensures it's a circle */
+  overflow: hidden;
+  /* Ensures the content doesn't overflow */
+  background-color: grey;
+  /* Set your desired background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-container span {
+  font-size: 2rem;
+  /* Adjust font size as needed */
+}
+
+.avatar-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* This property ensures the image covers the entire container */
+}
