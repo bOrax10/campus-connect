@@ -40,3 +40,8 @@ code {
   object-fit: cover;
   /* This property ensures the image covers the entire container */
 }
+
+.review-content {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}

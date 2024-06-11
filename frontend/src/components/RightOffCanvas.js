@@ -18,13 +18,13 @@ const RightOffCanvas = () => {
 
     const opportunities = [{
         'post': "Design Volunteer",
-        'by': 'Consulting & Analytics Club',
+        'author': 'Consulting & Analytics Club',
         'avatar': './assets/cna.png',
         'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet, massa at interdum faucibus, nulla lorem consectetur ante, sit amet semper nulla risus in neque.',
         'postTime': '2 days'
     },{
         'post': "Design Volunteer",
-        'by': 'Consulting & Analytics Club',
+        'author': 'Consulting & Analytics Club',
         'avatar': './assets/cna.png',
         'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet, massa at interdum faucibus, nulla lorem consectetur ante, sit amet semper nulla risus in neque.',
         'postTime': '2 days'
@@ -52,13 +52,13 @@ const RightOffCanvas = () => {
     const notifications = [
         {
             'type': 'connect',
-            'by': 'aravind.s',
+            'author': 'aravind.s',
             'avatar':'',
             'time':'5 mins ago',
         },
         {
             'type': 'comment',
-            'by': 'i.aashay',
+            'author': 'i.aashay',
             'avatar':'',
             'time':'5 mins ago',
             'link':''
@@ -140,7 +140,7 @@ const RightOffCanvas = () => {
                                         </div>
                                         <div className='d-flex flex-column'>
                                             <h6 className="card-title">{opportunity.post}</h6>
-                                            <h6 className="card-subtitle mb-2 text-body-secondary">{opportunity.by}</h6>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary">{opportunity.author}</h6>
                                         </div>
                                     </div>    
                                     <small className='text-secondary'>{opportunity.description}</small>                              
@@ -224,7 +224,7 @@ const RightOffCanvas = () => {
                                         </div>
                                         <div className='d-flex flex-column'>
                                             <small><h6 className="card-title text-secondary">{notification.time}</h6></small>
-                                            <h6 className="card-subtitle mb-2 text-body-secondary"> <b>@{notification.by}</b> has requested to connect with you</h6>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary"> <b>@{notification.author}</b> has requested to connect with you</h6>
                                             <Link to='/profile/connection_requests'> <small>View Connection Requests</small> </Link>
                                         </div>
                                     </div>    
@@ -237,7 +237,7 @@ const RightOffCanvas = () => {
                                         </div>
                                         <div className='d-flex flex-column'>
                                             <small><h6 className="card-title text-secondary">{notification.time}</h6></small>
-                                            <h6 className="card-subtitle mb-2 text-body-secondary"> <b>@{notification.by}</b> commented on your post.</h6>
+                                            <h6 className="card-subtitle mb-2 text-body-secondary"> <b>@{notification.author}</b> commented on your post.</h6>
                                             <Link to={notification.link}><small>Click to view</small> </Link>
                                         </div>
                                     </div>  
