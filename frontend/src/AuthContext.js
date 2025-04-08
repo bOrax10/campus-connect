@@ -1,40 +1,46 @@
 // src/AuthContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    const saved = localStorage.getItem('isLoggedIn');
-    return saved === 'true';
-  });
-  const [userData, setUserData] = useState(() => {
-    const saved = localStorage.getItem('userData');
-    return saved ? JSON.parse(saved) : null;
-  });
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+        const saved = Cookies.get("isLoggedIn");
+        return saved === "true";
+    });
 
-  useEffect(() => {
-    localStorage.setItem('isLoggedIn', isLoggedIn);
-  }, [isLoggedIn]);
+    const [userData, setUserData] = useState(() => {
+        const saved = Cookies.get("userData");
+        return saved ? JSON.parse(saved) : null;
+    });
 
-  useEffect(() => {
-    if (userData) {
-      localStorage.setItem('userData', JSON.stringify(userData));
-    } else {
-      localStorage.removeItem('userData');
-    }
-  }, [userData]);
+    useEffect(() => {
+        Cookies.set("isLoggedIn", isLoggedIn, { expires: 7, secure: true, sameSite: "Strict" });
+    }, [isLoggedIn]);
 
-  const logout = () => {
-    setIsLoggedIn(false);
-    setUserData(null);
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userData');
-  };
+    useEffect(() => {
+        if (userData) {
+            Cookies.set("userData", JSON.stringify(userData), {
+                expires: 7,
+                secure: true,
+                sameSite: "Strict",
+            });
+        } else {
+            Cookies.remove("userData");
+        }
+    }, [userData]);
 
-  return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, userData, setUserData, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+    const logout = () => {
+        setIsLoggedIn(false);
+        setUserData(null);
+        Cookies.remove("isLoggedIn");
+        Cookies.remove("userData");
+    };
+
+    return (
+        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, userData, setUserData, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
